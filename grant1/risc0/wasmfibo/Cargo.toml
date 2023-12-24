@@ -1,0 +1,18 @@
+[package]
+name = "wasmfibo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+home = "0.5.5"
+which = "4.4.2"
+prost-build = "0.12.1"
+risc0-zkvm = "0.19.1"
+serde = "1.0"
+wasmfibo-methods = { path = "methods" }
+wat = "<1.0.72"
+
+[features]
+cuda = ["risc0-zkvm/cuda"]
+default = []
+metal = ["risc0-zkvm/metal"]

@@ -1,0 +1,49 @@
+[workspace]
+resolver = "1"
+members = [
+  "wasmfibo",
+]
+exclude = ["tools/crates-validator"]
+
+[workspace.package]
+name = "risc0-fib"
+version = "0.1.1"
+license = "Apache-2.0"
+
+[workspace.dependencies]
+
+bonsai-ethereum-contracts = { version = "0.5.1"  }
+bonsai-ethereum-relay = { version = "0.5.1", default-features = false }
+bonsai-rest-api-mock = { version = "0.5.1", default-features = false }
+bonsai-sdk = { version = "0.5.1", default-features = false}
+risc0-binfmt = { version = "0.19.1", default-features = false }
+risc0-build = { version = "0.19.1", default-features = false }
+risc0-build-kernel = { version = "0.19.1", default-features = false }
+risc0-circuit-recursion = { version = "0.19.1", default-features = false }
+risc0-circuit-recursion-sys = { version = "0.19.1", default-features = false}
+risc0-circuit-rv32im = { version = "0.19.1", default-features = false }
+risc0-circuit-rv32im-sys = { version = "0.19.1", default-features = false }
+risc0-core = { version = "0.19.1", default-features = false }
+risc0-r0vm = { version = "0.19.1", default-features = false }
+risc0-sys = { version = "0.19.1", default-features = false }
+risc0-zkp = { version = "0.19.1", default-features = false }
+risc0-zkvm = { version = "0.19.1", default-features = false }
+risc0-zkvm-platform = { version = "0.19.1", default-features = false }
+
+
+[profile.bench]
+lto = true
+
+# Always optimize; otherwise tests take excessively long.
+[profile.dev]
+opt-level = 3
+
+[profile.dev.build-override]
+opt-level = 3
+
+[profile.release]
+debug = 1
+lto = true
+
+[profile.release.build-override]
+opt-level = 3
